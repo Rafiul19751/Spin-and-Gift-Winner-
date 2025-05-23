@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,16 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Spin & Win!</title>
 
-    <!-- Open Graph Meta Tags for WhatsApp/Social Media Link Preview -->
     <meta property="og:title" content="Spin & Win! Guaranteed Prize!">
     <meta property="og:description" content="Try your luck on the Spin & Win wheel and win amazing prizes! Enter your details and share to claim.">
-    <meta property="og:image" content="YOUR_ABSOLUTE_URL_TO_SPIN.PNG">
-    <meta property="og:url" content="YOUR_PAGE_ABSOLUTE_URL">
+    <meta property="og:image" content="https://spin-and-gift-winner.vercel.app/spin.png"> <meta property="og:url" content="https://spin-and-gift-winner.vercel.app">
     <meta property="og:type" content="website">
-    <!-- You can also add a more specific favicon for browsers if you like -->
-    <!-- <link rel="icon" href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjsb2TOJKY1Wds9qT98QTnijgmZdx8ejU4KoTdPaJYVedYbdM1NXK9pDVrRTeOFHWOcjQOHklXukk43QyKXU6HWXKAWKnG0HqRPSaflBbKsCjTTqxIWXvJoMAHfLK3cgzQELGogagKPUJFN2OZxbxVDQRUvjfWNt9OLWqaH4l62XitdxWkyoQC8t4SnWxU/s1920/spin.png" type="image/png"> -->
-
-
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
     <style>
         /* আপনার বাকি CSS কোড এখানে থাকবে */
@@ -238,14 +231,11 @@
 	};
 </script>
 <script type="text/javascript" src="//www.highperformanceformat.com/ec78c50f066b48f2ed340fc3e8a0ec14/invoke.js"></script>
-    <!-- আপনার HTML এর বাকি অংশ -->
     <div class="container">
         <h1>Spin the Wheel & <br class="hidden-sm">Win a Guaranteed Prize!</h1>
 
         <div class="wheel-container">
-            <img src="spin.png" id="spinWheel" alt="Spin Wheel">
-            <img src="button.png" id="centerStaticButton" alt="Center Button">
-        </div>
+            <img src="spin.png" id="spinWheel" alt="Spin Wheel"> <img src="button.png" id="centerStaticButton" alt="Center Button"> </div>
 
         <button id="spinButton" class="action-button">SPIN NOW</button>
 
@@ -269,7 +259,6 @@
     </div>
 
     <script>
-        // আপনার JavaScript কোড এখানে থাকবে
         const spinWheel = document.getElementById('spinWheel');
         const spinButton = document.getElementById('spinButton');
 
@@ -283,10 +272,8 @@
 
         const finalMessageArea = document.getElementById('finalMessageArea');
 
-        // --- IMPORTANT: REPLACE WITH YOUR ACTUAL BLOGGER POST URL ---
         const bloggerPostUrl = "https://dailynewspaperwould.blogspot.com/2025/05/bttc-red-pocket.html";
-        // Example: const bloggerPostUrl = "https://yourblogname.blogspot.com/2023/01/your-prize-post.html";
-
+        const pageShareUrl = "https://spin-and-gift-winner.vercel.app"; // এই লিংকটি শেয়ার করা হবে
 
         const prizeSegments = [
             "$100 Cash Prize", "Movie Ticket", "iPhone 15", "Samsung TV",
@@ -307,7 +294,7 @@
             whatsappShareButton.disabled = false;
             whatsappShareButton.textContent = "Share with 10 Friends";
             submitClaimButton.disabled = true;
-            submitClaimButton.textContent = "Claim Now Gift"; // Reset button text
+            submitClaimButton.textContent = "Claim Now Gift";
             claimProcessArea.classList.add('hidden');
             finalMessageArea.classList.add('hidden');
         }
@@ -365,8 +352,7 @@
         });
 
         whatsappShareButton.addEventListener('click', () => {
-            const nameForShare = userNameInput.value.trim(); // Only get the name
-            const pageUrl = window.location.href;
+            const nameForShare = userNameInput.value.trim();
             let shareText;
 
             if (!currentWinningPrize) {
@@ -374,16 +360,17 @@
                 return;
             }
 
+            // এখানে pageShareUrl ব্যবহার করা হয়েছে
             if (nameForShare) {
-                 shareText = `${nameForShare} just won a ${currentWinningPrize} on this Spin & Win page! Try your luck too: ${pageUrl}`;
+                 shareText = `${nameForShare} just won a ${currentWinningPrize} on this Spin & Win page! Try your luck too: ${pageShareUrl}`;
             } else {
-                 shareText = `I just won a ${currentWinningPrize} on this Spin & Win page! Try your luck too: ${pageUrl}`;
+                 shareText = `I just won a ${currentWinningPrize} on this Spin & Win page! Try your luck too: ${pageShareUrl}`;
             }
 
             const whatsappUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent(shareText)}`;
             window.open(whatsappUrl, '_blank');
 
-            submitClaimButton.disabled = false; // Enable claim button after share attempt
+            submitClaimButton.disabled = false;
             whatsappShareButton.textContent = "Shared! Now Claim Below";
             whatsappShareButton.disabled = true;
         });
@@ -396,12 +383,12 @@
                 alert("Please fill in both Name and Mobile Number.");
                 return;
             }
-            if (!/^\d{10,}$/.test(mobile)) {
+            if (!/^\d{10,}$/.test(mobile)) { // মোবাইল নম্বর কমপক্ষে ১০ ডিজিটের হতে হবে
                 alert("Please enter a valid mobile number (at least 10 digits).");
                 return;
             }
 
-            if (bloggerPostUrl === "YOUR_BLOGGER_POST_URL_HERE" || bloggerPostUrl === "") {
+            if (bloggerPostUrl === "YOUR_BLOGGER_POST_URL_HERE" || bloggerPostUrl === "") { // এই নামটি আপনার আসল bloggerPostUrl এর সাথে মেলাতে হবে যদি placeholder ব্যবহার করে থাকেন
                 alert("Sorry, the prize page is not set up yet. Please contact the administrator.");
                 console.error("Blogger Post URL is not set in the script.");
                 return;
@@ -422,12 +409,10 @@
                 currentWinningPrize = "";
                 resetClaimState();
                 finalMessageArea.classList.add('hidden');
-                // Restore original final message if you want it to be standard for every successful claim
                 finalMessageArea.innerHTML = `<p>Your prize claim has been submitted successfully!</p><p>You will be contacted soon.</p>`;
             }, 4000);
         });
 
-        // Optional: Adjust layout for small screens title
         if (window.innerWidth < 380) {
             document.querySelector('h1 .hidden-sm')?.classList.remove('hidden-sm');
         }
